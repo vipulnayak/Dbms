@@ -1,0 +1,114 @@
+Create table publisher 
+(
+	Name varchar(10),
+	Address varchar(20),
+	phone number(10),
+	primary key(Name)
+);
+
+Create table book1
+(
+	book_id number(3),
+	title varchar(20),
+	publisher_name varchar(10),
+	pub_year number(4),
+	primary key(book_id),
+	foreign key(publisher_name)references publisher(Name)
+);
+
+Create table bookauthor
+(
+	book_id number(3),
+	author_name varchar(10),
+	foreign key (book_id) references book1(book_id)
+);
+
+Create table library_programme
+(
+	programme_id number(4),
+	programme_name varchar(10),
+	address varchar(20),
+	primary key(programme_id)
+);
+
+Create table bookcopies
+(
+	book_id number(3),
+	programme_id number(4),
+	no_ofcopies number(5),
+	primary key(book_id,programme_id ),
+	foreign key (book_id) references book1(book_id),
+	foreign key (programme_id) references library_programme(programme_id)
+);
+
+Create table card1 
+(
+	card_no number(3),
+	primary key(card_no)
+);
+
+Create table booklending 
+(
+	book_id number(3),
+	programme_id number(3),
+	card_no number(3),
+	date_out date,
+	due_date date,
+	primary key(book_id,programme_id,card_no ),
+	foreign key (book_id) references book1(book_id),
+	foreign key (programme_id) references library_programme(programme_id),
+	foreign key (card_no) references card1(card_no)
+);
+
+insert into publisher values('John','USA',1234567890);
+insert into publisher values('Ram','UAE',8875421911);
+insert into publisher values('Raj','Bangalore',9574236999);
+insert into publisher values('Rita','Kerala',8875693240);
+insert into publisher values('Sita','Mangalore',9986523475);
+
+
+insert into book1 values(123,'Plants','John',2005);
+insert into book1 values(456,'Animals','Ram',2006);
+insert into book1 values(789,'Nature','Raj',2007);
+insert into book1 values(115,'Blind','Rita',2008);
+insert into book1 values(754,'Peace','Sita',2009);
+
+insert into bookauthor values(123,'BillGates');
+insert into bookauthor values(456,'Jerry');
+insert into bookauthor values(789,'Tom');
+insert into bookauthor values(115,'Oggy');
+insert into bookauthor values(754,'Pakadam');
+
+insert into library_programme values(7243,'Artgallery','US');
+insert into library_programme values(4451,'Mela','Germany');
+insert into library_programme values(6543,'Andhas','Mite');
+insert into library_programme values(5432,'Kampana','Alvas');
+insert into library_programme values(7321,'Agri','Mysore');
+
+
+insert into bookcopies values(123,7243,40);
+insert into bookcopies values(456,4451,29);
+insert into bookcopies values(789,6543,500);
+insert into bookcopies values(115,5432,511);
+insert into bookcopies values(754,7321,115);
+
+
+
+
+insert into card1 values(1001);
+insert into card1 values(1002);
+insert into card1 values(1003);
+insert into card1 values(1004);
+insert into card1 values(1005);
+
+
+
+
+
+
+
+
+
+
+
+
