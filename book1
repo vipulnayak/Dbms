@@ -47,10 +47,10 @@ Create table card1
 	primary key(card_no)
 );
 
-Create table booklending 
+Create table booklending2 
 (
 	book_id number(3),
-	programme_id number(3),
+	programme_id number(4),
 	card_no number(3),
 	date_out date,
 	due_date date,
@@ -72,18 +72,22 @@ insert into book1 values(456,'Animals','Ram',2006);
 insert into book1 values(789,'Nature','Raj',2007);
 insert into book1 values(115,'Blind','Rita',2008);
 insert into book1 values(754,'Peace','Sita',2009);
+insert into book1 values(111,'Peac','Sia',2004);
 
 insert into bookauthor values(123,'BillGates');
 insert into bookauthor values(456,'Jerry');
 insert into bookauthor values(789,'Tom');
 insert into bookauthor values(115,'Oggy');
 insert into bookauthor values(754,'Pakadam');
+insert into bookauthor values(111,'Pakam');
+
 
 insert into library_programme values(7243,'Artgallery','US');
 insert into library_programme values(4451,'Mela','Germany');
 insert into library_programme values(6543,'Andhas','Mite');
 insert into library_programme values(5432,'Kampana','Alvas');
 insert into library_programme values(7321,'Agri','Mysore');
+insert into library_programme values(732,'Agr','Mysre');
 
 
 insert into bookcopies values(123,7243,40);
@@ -91,23 +95,49 @@ insert into bookcopies values(456,4451,29);
 insert into bookcopies values(789,6543,500);
 insert into bookcopies values(115,5432,511);
 insert into bookcopies values(754,7321,115);
+insert into bookcopies values(111,732,200);
 
 
 
 
-insert into card1 values(1001);
-insert into card1 values(1002);
-insert into card1 values(1003);
-insert into card1 values(1004);
-insert into card1 values(1005);
+insert into card1 values(10);
+insert into card1 values(02);
+insert into card1 values(03);
+insert into card1 values(04);
+insert into card1 values(05);
 
 
 
 
+insert into booklending2 values(123,7243,10,'01-jan-2017','01-jul-2017');
+insert into booklending2 values(456,4451,02, '01-jan-2017','01-jul-2017');
+insert into booklending2 values(789,6543,03,'01-jan-2017','01-jul-2017');
+insert into booklending2 values(115,5432,04,'01-jan-2017','01-jul-2017');
+insert into booklending2 values(754,7321,05,'01-jan-2017','01-jul-2017');
 
 
 
+Select b.book_id,b.title,b.publisher_name,a.author_name,c.no_ofcopies ,l.programme_id
+FROM book b,bookauthor a,bookcopies c,booklending l
+Where b.book_id=c.book_id AND b.book_id=l.book_id;
 
+
+
+Select card_no
+From booklending2
+Where date_out Between '01-jan-2017' AND '01-jul-2017'
+Having count(*)>3;
+
+
+Delete from book1 where book_id =789;
+Select * from book1;
+Select * from bookcopies;
+Select *from booklending2;
+
+
+insert into booklending2 values(456,7243,10,'01-jan-2017','01-jul-2017');
+insert into booklending2 values(789,7243,10,'01-jan-2017','01-jul-2017');
+insert into booklending2 values(115,7243,10,'01-jan-2017','01-jul-2017');
 
 
 
