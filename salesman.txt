@@ -49,3 +49,14 @@ insert into Orders values(51,450,'20-jan-2017',10,2000);
 insert into Orders values(52,1000,'20-feb-2017',13,2000);
 insert into Orders values(53,3500,'13-april-2017',14,3000);
 insert into Orders values(54,550,'09-mar-2017',12,2000);
+
+
+
+
+
+Select grade,count(DISTINCT Customer_id)
+From Customer 
+Group by grade 
+Having grade>(Select(AVG(grade))
+From Customer 
+Where city='Bangalore');
