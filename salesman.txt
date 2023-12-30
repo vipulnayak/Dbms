@@ -1,0 +1,30 @@
+Create table Salesman
+(
+Salesman_id number(4),
+name varchar(15),
+city varchar(17),
+commission varchar(10),
+primary key (Salesman_id)
+);
+
+
+Create table Customer
+(
+Customer_id number(5),
+Customer_name varchar(10),
+city varchar(17),
+grade number(3),
+Salesman_id number(4),
+primary key (Customer_id),
+foreign key(Salesman_id ) references  Salesman( Salesman_id) on delete set null);
+
+Create table Orders
+(
+Order_no number(3),
+Purchase_amt number(5),
+Order_date date,
+Customer_id number(5),
+Salesman_id number(4),
+primary key (Order_no),
+foreign key(Customer_id ) references Customer (Customer_id  ) on delete cascade,
+foreign key(Salesman_id ) references  Salesman( Salesman_id) on delete cascade);
