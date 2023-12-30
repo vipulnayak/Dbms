@@ -28,3 +28,24 @@ Salesman_id number(4),
 primary key (Order_no),
 foreign key(Customer_id ) references Customer (Customer_id  ) on delete cascade,
 foreign key(Salesman_id ) references  Salesman( Salesman_id) on delete cascade);
+
+
+insert into Salesman values(1000,'john','banglore',10);
+insert into Salesman values(2000,'Ravi','Manglore',20);
+insert into Salesman values(3000,'Kumar','Mysore',30);
+insert into Salesman values(4000,'Harsha','hyderabad',40);
+insert into Salesman values(5000,'Smith','Delhi',50);
+
+
+insert into Customer values(10,'preeti','Banglore',1000);
+insert into Customer values(11,'Vivek','gadag',200,1000);
+insert into Customer values(12,'Bhaskar','Mysore',300,2000);
+insert into Customer values(13,'Amith','Banglore',200,2000);
+insert into Customer values(14,'Mamatha','Banglore',400,3000);
+
+
+insert into Orders values(50,5000,'04-May-2017',10,1000);
+insert into Orders values(51,450,'20-jan-2017',10,2000);
+insert into Orders values(52,1000,'20-feb-2017',13,2000);
+insert into Orders values(53,3500,'13-april-2017',14,3000);
+insert into Orders values(54,550,'09-mar-2017',12,2000);
